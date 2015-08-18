@@ -7,7 +7,7 @@ ActiveRecord::Base.establish_connection(
 )
 
 # GET list
-get '/api/list' do
+get '/api/improv_group' do
   ImprovGroup.all.to_json
 end
 
@@ -24,12 +24,12 @@ post '/api/improv_group' do
 end
 
 # GET Read Individual Record
-get '/api/list/:id' do
+get '/api/improv_group/:id' do
   @improv_group = ImprovGroup.find(params[:id]).to_json
 end
 
 # PATCH Update Record
-patch '/api/update/:id' do
+patch '/api/improv_group/:id' do
   improv_group_args = { :groupname => params[:name], :founded => params[:founded], :members => params[:members], :homeclub => params[:homeclub], :recurringshow => params[:show]}
   @improv_group = ImprovGroup.find(params[:id])
   @improv_group.update(improv_group_args)
@@ -37,7 +37,7 @@ patch '/api/update/:id' do
 end
 
 # PUT Update Record
-put '/api/update/:id' do
+put '/api/improv_group/:id' do
   improv_group_args = { :groupname => params[:name], :founded => params[:founded], :members => params[:members], :homeclub => params[:homeclub], :recurringshow => params[:show]}
   @improv_group = ImprovGroup.find(params[:id])
   @improv_group.update(improv_group_args)
@@ -45,6 +45,6 @@ put '/api/update/:id' do
 end
 
 # DELETE Destroy Record
-delete '/api/delete/:id' do
+delete '/api/improv_group/:id' do
   ImprovGroup.destroy(params[:id]).to_json
 end
